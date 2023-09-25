@@ -1,0 +1,21 @@
+.overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-post-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    list-style: none;
+    width: 100%; /* Zorg ervoor dat de lijst de volledige breedte van de container inneemt */
+}
+
+.blog-post-item {
+    width: calc(50% - 10px); /* Verdeel de container in twee kolommen (min een beetje marge) */
+    border: solid #38E991 2px;
+    margin-bottom: 20px; /* Voeg wat ruimte toe onder elke blogpost */
+}

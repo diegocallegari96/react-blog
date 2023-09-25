@@ -1,4 +1,5 @@
 import posts from "../../constants/data.json"
+import "./Overview.css"
 import React, { useEffect, useState } from 'react';
 
 
@@ -10,8 +11,8 @@ function Overview() {
         return (
             <ul className="blog-post-list">
                 {posts.map((post) => (
-                    <li key={post.id}>
-                        <a href={`/blogposts:id/${post.id}`}>
+                    <li key={post.id} className="blog-post-item">
+                        <a href={`/blogposts:id${post.id}`}>
                             {post.title} ({post.author})
                         </a>
                         <p>
