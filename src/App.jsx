@@ -14,6 +14,8 @@ function App() {
             <div className="page-container">
             <img src={logo} alt="Company logo"/>
                 <NavBar/>
+            </div>
+            <div>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/new" element={<NewPosts/>}/>
@@ -21,9 +23,6 @@ function App() {
                     <Route path="/blogposts/:blogId" element={<OverviewDetail/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
-            </div>
-            <div>
-
             </div>
 
 
