@@ -5,7 +5,7 @@ function OverviewDetail() {
     const { blogId } = useParams();
 
     return(
-        <h4>Het productnummer is {blogId}</h4>
+        <h4>Blog artikel: {blogId}</h4>
     )
 }
 

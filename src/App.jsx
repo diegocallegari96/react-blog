@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home.jsx"
 import NewPosts from "./pages/NewPosts/NewPosts.jsx"
 import Overview from "./pages/Overview/Overview.jsx"
 import OverviewDetail from "./pages/OverviewDetail/OverviewDetail.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/new" element={<NewPosts/>}/>
                     <Route path="/blogposts" element={<Overview/>}/>
                     <Route path="/blogposts/:blogId" element={<OverviewDetail/>}/>
+                    <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>
             <div>
