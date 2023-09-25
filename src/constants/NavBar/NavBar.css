@@ -1,0 +1,35 @@
+nav {
+    background-color: transparent; /* Achtergrondkleur van de navigatiebalk */
+    color: #fff; /* Tekstkleur */
+    font-size: 26px; /* Tekstgrootte */
+}
+
+ul.NavigationBar {
+    list-style-type: none; /* Verwijder lijstpuntjes van de lijst */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Maakt een horizontale lijst van de links */
+    justify-content: center; /* Centreert de links horizontaal */
+}
+
+ul.NavigationBar li {
+    margin: 0 20px; /* Ruimte tussen de lijstitems */
+}
+
+ul.NavigationBar li a {
+    text-decoration: none; /* Verwijder onderstreping van de links */
+    color: #fff; /* Tekstkleur van de links */
+    transition: color 0.3s; /* Overgangseffect voor de tekstkleur */
+}
+
+ul.NavigationBar li a:hover {
+    color: #38E991; /* Verander de tekstkleur bij hover naar een andere kleur (bijvoorbeeld rood) */
+}
+
+.active-menu-link {
+    border-bottom: none;
+}
+
+.default-menu-link {
+    border-bottom: 1px solid #38E991;
+}
