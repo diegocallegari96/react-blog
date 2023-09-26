@@ -13,9 +13,9 @@ function Overview() {
             <ul className="blog-post-list">
                 {posts.map((post) => (
                     <li key={post.id} className="blog-post-item">
-                        <Link to={`/blogposts/${post.id}`}> {/* Fix de link hier */}
+                        <Link to={`/blogposts/${post.id}`}>
                             {post.title} ({post.author})
-                        </Link> {/* Sluit de link hier af */}
+                        </Link>
                         <p>
                             {post.comments} reacties - {post.shares} keer gedeeld
                         </p>

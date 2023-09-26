@@ -4,8 +4,11 @@ import posts from "../../constants/data.json"
 
 
 function OverviewDetail() {
-    const { blogId } = useParams();
-    const blogPost = posts.find(post => post.id === parseInt(blogId));
+    const { id } = useParams();
+    const blogPost = posts.find(post => post.id === parseInt(id));
+    console.log(id);
+    console.log(useParams());
+
 
     if (!blogPost) {
         return <div className="blogpostNotFound" >Blogpost niet gevonden
