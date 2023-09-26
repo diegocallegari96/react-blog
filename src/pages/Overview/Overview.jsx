@@ -1,6 +1,7 @@
 import posts from "../../constants/data.json"
 import "./Overview.css"
 import React, { useEffect, useState } from 'react';
+import {Link} from "react-router-dom";
 
 
 
@@ -12,9 +13,9 @@ function Overview() {
             <ul className="blog-post-list">
                 {posts.map((post) => (
                     <li key={post.id} className="blog-post-item">
-                        <a href={`/blogposts:id${post.id}`}>
+                        <Link to={`/blogposts/${post.id}`}> {/* Fix de link hier */}
                             {post.title} ({post.author})
-                        </a>
+                        </Link> {/* Sluit de link hier af */}
                         <p>
                             {post.comments} reacties - {post.shares} keer gedeeld
                         </p>
@@ -31,5 +32,6 @@ function Overview() {
         </div>
     );
 }
+
 
 export default Overview;

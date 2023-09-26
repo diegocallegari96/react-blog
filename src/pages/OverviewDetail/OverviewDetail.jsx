@@ -1,5 +1,6 @@
 import {Link, useParams} from "react-router-dom";
 import "./OverviewDetail.css"
+import posts from "../../constants/data.json"
 
 
 function OverviewDetail() {
@@ -7,7 +8,9 @@ function OverviewDetail() {
     const blogPost = posts.find(post => post.id === parseInt(blogId));
 
     if (!blogPost) {
-        return <div>Blogpost niet gevonden</div>;
+        return <div className="blogpostNotFound" >Blogpost niet gevonden
+               <Link to="/blogposts">Terug naar de overzichtspagina</Link>
+        </div>;
 
 
     }
