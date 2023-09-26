@@ -4,31 +4,3 @@
     justify-content: center;
     align-items: center;
 }
-
-
-
-
-
-<div class="card">
-<div class="back">
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-<div class="blob"></div>
-</div>
-<div class="text">
-<ul className="blog-post-list">
-                              {posts.map((post) => (
-                              <li key={post.id} className="blog-post-item">
-    <Link to={`/blogposts/${post.id}`}>
-                                      {post.title} ({post.author})
-                              </Link>
-                              <p>
-                              {post.comments} reacties - {post.shares} keer gedeeld
-                              </p>
-                              </li>
-                              ))}
-</ul>
-</div>
-</div>
