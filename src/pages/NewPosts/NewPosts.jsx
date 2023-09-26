@@ -1,8 +1,10 @@
-
+import "./NewPosts.css"
 
 function NewPosts() {
     return(
-        <h1>hoi newposts</h1>
+        <div className="newPosts">
+        <h1>Work in progress!</h1>
+        </div>
     )
 }
 
