@@ -1,15 +1,29 @@
 import "./NewPosts.css"
+import { useForm } from "react-hook-form";
 
 
 function NewPosts() {
+    const { register, handleSubmit } = useForm();
+    function handleFormSubmit(data) {
+        const definitiveData = {...data};
+        definitiveData.shares = 0;
+        data.shares = definitiveData.shares;
+        definitiveData.comments = 0;
+        data.comments = definitiveData.shares;
+        console.log(data)
+    }
+
+
     return(
-        <form>
+        <form className="form-blog" onSubmit={handleSubmit(handleFormSubmit)}>
             <label htmlFor="title-field">
                 Titel:
                 <input
                     type="text"
-                    name="title"
                     id="title-field"
+                    {...register("title", {
+                        required: true,
+                    })}
                 />
             </label>
 
@@ -17,8 +31,10 @@ function NewPosts() {
                 Subtitel:
                 <input
                     type="text"
-                    name="subtitle"
                     id="subtitle-field"
+                    {...register("subtitle", {
+                        required: true,
+                    })}
                 />
             </label>
 
@@ -26,8 +42,10 @@ function NewPosts() {
                 Auteur:
                 <input
                     type="text"
-                    name="author"
                     id="author-field"
+                    {...register("author", {
+                        required: true,
+                    })}
                 />
             </label>
 
@@ -38,7 +56,11 @@ function NewPosts() {
                     rows="4"
                     cols="40"
                     placeholder="Schrijf hier je blog"
-                    name="message-content"
+                    {...register("message-content", {
+                        required: true,
+                        minLength: 300,
+                        maxLength: 2000,
+                    })}
                 ></textarea>
             </label>
 
