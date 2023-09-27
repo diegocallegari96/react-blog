@@ -1,16 +1,25 @@
 import "./NewPosts.css"
 import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
 
 
 function NewPosts() {
     const { register, handleSubmit } = useForm();
+    const [timestamp, setTimestamp] = React.useState('');
+
     function handleFormSubmit(data) {
         const definitiveData = {...data};
         definitiveData.shares = 0;
         data.shares = definitiveData.shares;
         definitiveData.comments = 0;
         data.comments = definitiveData.shares;
+        definitiveData.created = timestamp;
+        data.created = definitiveData.created
         console.log(data)
+    }
+
+    function handleButtonClick() {
+        setTimestamp(new Date().toISOString());
     }
 
 
@@ -64,7 +73,10 @@ function NewPosts() {
                 ></textarea>
             </label>
 
-            <button type="submit">
+            <button type="submit"
+                    id="form-button"
+                    onClick={handleButtonClick}
+            >
                 Plaatsen
             </button>
         </form>
