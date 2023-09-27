@@ -3,9 +3,7 @@
 function berekenLeestijd(tekst) {
     const woorden = tekst.replace(/<[^>]+>/g, "").split(/\s+/);
 
-    const leestijdIninuten = Math.round(woorden.length / 100 * 0.3);
-
-    return leestijdIninuten;
+    return Math.round(woorden.length / 100 * 0.3);
 }
 
 export default berekenLeestijd;

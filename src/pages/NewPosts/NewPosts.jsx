@@ -36,8 +36,8 @@ function NewPosts() {
 
         >
             <label htmlFor="title-field">
-                Titel:
                 <input
+                    placeholder="Titel"
                     type="text"
                     id="title-field"
                     {...register("title", {
@@ -47,8 +47,8 @@ function NewPosts() {
             </label>
 
             <label htmlFor="subtitle-field">
-                Subtitel:
                 <input
+                    placeholder="Subtitel"
                     type="text"
                     id="subtitle-field"
                     {...register("subtitle", {
@@ -58,8 +58,8 @@ function NewPosts() {
             </label>
 
             <label htmlFor="author-field">
-                Auteur:
                 <input
+                    placeholder="Auteur"
                     type="text"
                     id="author-field"
                     {...register("author", {
@@ -69,7 +69,6 @@ function NewPosts() {
             </label>
 
             <label htmlFor="message-field">
-                Blogpost:
                 <textarea
                     id="message-field"
                     rows="4"
