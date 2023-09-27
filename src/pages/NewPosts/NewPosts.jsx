@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function NewPosts() {
-    const { register, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const [timestamp, setTimestamp] = React.useState('');
     const navigate = useNavigate();
 
@@ -36,48 +36,70 @@ function NewPosts() {
 
         >
             <label htmlFor="title-field">
+                {errors.title && <p>{errors.title.message}</p>}
                 <input
                     placeholder="Titel"
                     type="text"
                     id="title-field"
                     {...register("title", {
-                        required: true,
+                        required: {
+                            value: true,
+                            message: "dit veld is verplicht",
+                        },
                     })}
                 />
             </label>
 
             <label htmlFor="subtitle-field">
+                {errors.subtitle && <p>{errors.subtitle.message}</p>}
                 <input
                     placeholder="Subtitel"
                     type="text"
                     id="subtitle-field"
                     {...register("subtitle", {
-                        required: true,
+                        required: {
+                            value: true,
+                            message: "dit veld is verplicht",
+                        },
                     })}
                 />
             </label>
 
             <label htmlFor="author-field">
+                {errors.author && <p>{errors.author.message}</p>}
                 <input
                     placeholder="Auteur"
                     type="text"
                     id="author-field"
                     {...register("author", {
-                        required: true,
+                        required: {
+                            value: true,
+                            message: "dit veld is verplicht",
+                        },
                     })}
                 />
             </label>
 
             <label htmlFor="message-field">
+                {errors["message-content"] && <p>{errors["message-content"].message}</p>}
                 <textarea
                     id="message-field"
                     rows="4"
                     cols="40"
                     placeholder="Schrijf hier je blog"
                     {...register("message-content", {
-                        required: true,
-                        minLength: 300,
-                        maxLength: 20000,
+                        required: {
+                            value: true,
+                            message: "Dit veld is verplicht",
+                        },
+                        minLength: {
+                            value: 300,
+                            message:"Input moet minimaal 300 karakters bevatten",
+                        },
+                        maxLength: {
+                            value: 20000,
+                            message: "Input mag maximaal 20000 karakters bevatten"
+                        }
                     })}
                 ></textarea>
             </label>
