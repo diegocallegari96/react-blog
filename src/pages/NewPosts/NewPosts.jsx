@@ -1,13 +1,18 @@
 import "./NewPosts.css"
 import { useForm } from "react-hook-form";
 import React, { useState } from 'react';
+import berekenLeestijd from "../../constants/ReadTime/ReadTime.jsx";
+import { useNavigate } from "react-router-dom";
+
 
 
 function NewPosts() {
     const { register, handleSubmit } = useForm();
     const [timestamp, setTimestamp] = React.useState('');
+    const navigate = useNavigate();
 
     function handleFormSubmit(data) {
+        navigate("/blogposts");
         const definitiveData = {...data};
         definitiveData.shares = 0;
         data.shares = definitiveData.shares;
@@ -15,6 +20,8 @@ function NewPosts() {
         data.comments = definitiveData.shares;
         definitiveData.created = timestamp;
         data.created = definitiveData.created
+        definitiveData.readTime = berekenLeestijd(data["message-content"]);
+        data.readTime = definitiveData.readTime;
         console.log(data)
     }
 
@@ -24,7 +31,10 @@ function NewPosts() {
 
 
     return(
-        <form className="form-blog" onSubmit={handleSubmit(handleFormSubmit)}>
+        <form className="form-blog"
+              onSubmit={handleSubmit(handleFormSubmit)}
+
+        >
             <label htmlFor="title-field">
                 Titel:
                 <input
@@ -68,7 +78,7 @@ function NewPosts() {
                     {...register("message-content", {
                         required: true,
                         minLength: 300,
-                        maxLength: 2000,
+                        maxLength: 20000,
                     })}
                 ></textarea>
             </label>
