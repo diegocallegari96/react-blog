@@ -1,23 +1,37 @@
-import posts from "../../constants/data.json"
 import "./Overview.css"
 import React, { useEffect, useState } from 'react';
 import {Link} from "react-router-dom";
+import axios from "axios";
+
 
 
 
 
 
 function Overview() {
+
+    const [blogPosts, setBlogPosts] = useState([]);
+    useEffect(() => {
+        axios
+            .get("http://localhost:3000/posts")
+            .then((response) => {
+                const data = response.data;
+                setBlogPosts(data)
+            });
+
+    }, []);
+
+    console.log()
     const renderBlogPosts = () => {
         return (
             <ul className="blog-post-list">
-                {posts.map((post) => (
-                    <li key={post.id} className="blog-post-item">
-                        <Link to={`/blogposts/${post.id}`}>
-                            {post.title} ({post.author})
+                {blogPosts.map((blogPosts) => (
+                    <li key={blogPosts.id} className="blog-post-item">
+                        <Link to={`/blogposts/${blogPosts.id}`}>
+                            {blogPosts.title} ({blogPosts.author})
                         </Link>
                         <p>
-                            {post.comments} reacties - {post.shares} keer gedeeld
+                            {blogPosts.comments} reacties - {blogPosts.shares} keer gedeeld
                         </p>
                     </li>
                 ))}

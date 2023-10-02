@@ -1,6 +1,9 @@
 import {Link, useParams} from "react-router-dom";
 import "./OverviewDetail.css"
 import posts from "../../constants/data.json"
+import {useEffect, useState} from "react";
+import axios from "axios";
+
 
 
 function OverviewDetail() {
@@ -8,6 +11,7 @@ function OverviewDetail() {
     const blogPost = posts.find(post => post.id === parseInt(id));
     console.log(id);
     console.log(useParams());
+
 
 
     if (!blogPost) {
