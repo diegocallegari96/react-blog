@@ -1,37 +1,66 @@
-import posts from "../../constants/data.json"
 import "./Overview.css"
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Link} from "react-router-dom";
+import axios from "axios";
+
+
+
 
 
 
 
 
 function Overview() {
-    const renderBlogPosts = () => {
-        return (
-            <ul className="blog-post-list">
-                {posts.map((post) => (
-                    <li key={post.id} className="blog-post-item">
-                        <Link to={`/blogposts/${post.id}`}>
-                            {post.title} ({post.author})
-                        </Link>
-                        <p>
-                            {post.comments} reacties - {post.shares} keer gedeeld
-                        </p>
-                    </li>
-                ))}
-            </ul>
-        );
-    };
+    const [blogPosts, setBlogPosts] = useState([]);
+    const [showPosts, setShowPosts] = useState(false);
+    const [error, setError] = useState(null);
 
-    return (
-        <div className="overview">
-            <h1>Blog Overzicht</h1>
-            {renderBlogPosts()}
-        </div>
-    );
-}
+    const fetchBlogPosts = () => {
+            axios
+                .get("http://localhost:3000/posts")
+                .then((response) => {
+                    const data = response.data;
+                    setBlogPosts(data);
+                    setShowPosts(true);
+                    setError(null);
+                })
+                .catch(() => {
+                    setError("Fout bij het ophalen van posts.");
+                    setShowPosts(false);
+                });
+        };
+
+        const renderBlogPosts = () => {
+            if (error) {
+                return <p>{error}</p>;
+            }
+            if (showPosts) {
+                return (
+                    <ul className="blog-post-list">
+                        {blogPosts.map((blogPosts) => (
+                            <li key={blogPosts.id} className="blog-post-item">
+                                <Link to={`/blogposts/${blogPosts.id}`}>
+                                    {blogPosts.title} ({blogPosts.author})
+                                </Link>
+                                <p>
+                                    {blogPosts.comments} reacties - {blogPosts.shares} keer gedeeld
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                );
+            }
+            return null;
+        };
+
+        return (
+            <div className="overview">
+                <h1>Blog Overzicht</h1>
+                <button type="button" onClick={fetchBlogPosts}>Haal posts op</button>
+                {renderBlogPosts()}
+            </div>
+        );
+    }
 
 
 export default Overview;
