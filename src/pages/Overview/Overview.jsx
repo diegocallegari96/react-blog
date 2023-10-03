@@ -1,7 +1,8 @@
 import "./Overview.css"
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
+
 
 
 
@@ -12,6 +13,7 @@ import axios from "axios";
 function Overview() {
     const [blogPosts, setBlogPosts] = useState([]);
     const [showPosts, setShowPosts] = useState(false);
+    const [error, setError] = useState(null);
 
     const fetchBlogPosts = () => {
             axios
@@ -20,10 +22,18 @@ function Overview() {
                     const data = response.data;
                     setBlogPosts(data);
                     setShowPosts(true);
+                    setError(null);
+                })
+                .catch(() => {
+                    setError("Fout bij het ophalen van posts.");
+                    setShowPosts(false);
                 });
-        }
+        };
 
         const renderBlogPosts = () => {
+            if (error) {
+                return <p>{error}</p>;
+            }
             if (showPosts) {
                 return (
                     <ul className="blog-post-list">
