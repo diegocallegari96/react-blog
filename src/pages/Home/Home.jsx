@@ -7,7 +7,7 @@ function Home() {
         <div className="homePage">
         <h1>Welkom op Bl0gventure</h1>
         <h2>Jouw avontuur start hier!</h2>
-        <p>Schrijf <Link to={`/blogposts`}> hier </Link></p>jouw persoonlijke blog item
+        <p>Klik <Link to={`/blogposts`}> hier </Link> om te beginnen</p>
         </div>
     )
 }
